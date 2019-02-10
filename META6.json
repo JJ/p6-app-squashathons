@@ -3,7 +3,7 @@
     "JJ Merelo"
   ],
   "build-depends" : [ ],
-  "depends" : [ ],
+  "depends" : [ "LWP::Simple" ],
   "description" : "blah blah blah",
   "license" : "Artistic-2.0",
   "name" : "App::Squashathons",

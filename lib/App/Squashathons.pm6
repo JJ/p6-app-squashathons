@@ -14,7 +14,7 @@ method new( $url ) {
     my %contributions;
     for $content.lines -> $l {
         next if $l ~~ /"♥"/; # First contribution
-        $l ~~ /$<who> = [ \w+ ]\+\+ \s+ $<what> = [ \w+ ]/;
+        $l ~~ /$<who> = [ <[\w \-]>+ ]\+\+ \s+ $<what> = [ \w+ ]/;
         my $who = ~$<who>;
         my $what = ~$<what>;
         if defined %contributions{$who} {

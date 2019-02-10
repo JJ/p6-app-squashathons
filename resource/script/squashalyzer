@@ -6,6 +6,6 @@ use App::Squashathons;
 
 sub MAIN( $url = "https://gist.githubusercontent.com/Whateverable/97e48cd53ee6983a046a2769b9f5f5c2/raw/53610087e4ee9dc1679e0278aac0f008d14a10ef/~log" ) {
     my $squashalyzer =  App::Squashathons.new($url);
-    say headers.words.join(", ");
+    say ",", headers.words.join(", ");
     .say for $squashalyzer.csv;
 }   

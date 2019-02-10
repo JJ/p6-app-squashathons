@@ -11,9 +11,9 @@
   "provides" : {
     "App::Squashathons" : "lib/App/Squashathons.pm6"
   },
-  "resources" : [ ],
-  "source-url" : "",
-  "tags" : [ ],
+    "resources" : [ "script/squashalyzer" ],
+  "source-url" : "https://github.com/JJ/p6-app-squashathons.git",
+    "tags" : [ "squashathons", "utilities"],
   "test-depends" : [ ],
   "version" : "0.0.1"
 }

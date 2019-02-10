@@ -3,7 +3,7 @@ unit class App::Squashathons:ver<0.0.1>;
 
 use LWP::Simple;
 
-constant headers is export = <wrote labeled unlabeled opened closed reopened self edited>;
+constant headers is export = <total wrote labeled unlabeled opened closed reopened self edited>;
 has @!contributions;
 has %.contributions;
 has $!lwp;

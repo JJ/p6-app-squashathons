@@ -4,16 +4,29 @@ unit class App::Squashathons:ver<0.0.1>;
 use LWP::Simple;
 
 has @!contributions;
-has $.lwp;
+has %.contributions;
+has $!lwp;
 
 method new( $url ) {
     my $lwp = LWP::Simple.new();
     my $content = $lwp.get($url) || die "Input $url does not work";
-    my @contributions;
+    my %contributions;
     for $content.lines -> $l {
-        push @contributions, $l;
+        next if $l ~~ /"♥"/; # First contribution
+        $l ~~ /$<who> = [ \w+ ]\+\+ \s+ $<what> = [ \w+ ]/;
+        my $who = ~$<who>;
+        my $what = ~$<what>;
+        if defined %contributions{$who} {
+           if defined %contributions{$who}{$what} {
+             %contributions{$who}{$what}++;
+           } else {
+                %contributions{$who}{$what} = 1;
+            }
+        } else {
+            %contributions{$who} = { $what => 1 };
+        }
     }
-    self.bless(:@contributions,:$lwp);
+    self.bless(:%contributions,:$lwp);
     
 }
 

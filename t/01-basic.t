@@ -7,5 +7,6 @@ constant test-log-url = "https://gist.githubusercontent.com/Whateverable/97e48cd
 my $squashanalyzer = App::Squashathons.new(test-log-url);
 
 isa-ok $squashanalyzer, App::Squashathons, "Creation OK";
+isa-ok $squashanalyzer.contributions, Hash, "Hash contributions created";
 
 done-testing;

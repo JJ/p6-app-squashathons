@@ -47,6 +47,10 @@ method csv( --> Seq ) {
     }
 }
 
+method total( --> Int ) {
+    %.contributions.keys.map( { %.contributions{$_}<total> }  ).sum;
+}
+
 =begin pod
 
 =head1 NAME

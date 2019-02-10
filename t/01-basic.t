@@ -12,4 +12,5 @@ isa-ok $squashanalyzer.contributions, Hash, "Hash contributions created";
 is $squashanalyzer.contributions<viklund><total>, 1, "Contributions tallied";
 isa-ok $squashanalyzer.csv, Seq, "Contributions are an array";
 is $squashanalyzer.csv.elems, $squashanalyzer.contributions.keys.elems, "All contributors" ;
+is $squashanalyzer.total, 502, "Total contributions correct";
 done-testing;

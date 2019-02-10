@@ -19,15 +19,31 @@ method new( $url ) {
         if defined %contributions{$who} {
            if defined %contributions{$who}{$what} {
              %contributions{$who}{$what}++;
+             %contributions{$who}<total>++;
            } else {
                 %contributions{$who}{$what} = 1;
-            }
+           }
         } else {
-            %contributions{$who} = { $what => 1 };
+            %contributions{$who} = { $what => 1,
+                                     total => 1};
         }
     }
     self.bless(:%contributions,:$lwp);
     
+}
+
+method csv( --> Seq ) {
+    gather {
+        for %.contributions.keys.sort: { %.contributions{$^b}<total> <=>  %.contributions{$^a}<total> } -> $author {
+            my @these-contribs = gather {
+                for <wrote labeled unlabeled opened closed reopened self edited> -> $action {
+                    take %.contributions{$author}{$action} // "";
+                }
+            }
+            take  "$author, " ~ @these-contribs.join(", " );
+
+        }
+    }
 }
 
 =begin pod

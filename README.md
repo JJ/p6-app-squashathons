@@ -1,34 +1,17 @@
-NAME
-====
+[![Build Status](https://travis-ci.org/JJ/p6-app-squashathons.svg?branch=master)](https://travis-ci.org/JJ/p6-app-squashathons)
 
-App::Squashathons - A script to analyze squashathon data
+NAME w App::Squashathons - blah blah blah
+=========================================
 
 SYNOPSIS
 ========
 
     use App::Squashathons;
-    
-    # You need the URL of the gist where the log has been uploaded
-    # Like this one:
-    # https://gist.githubusercontent.com/Whateverable/dea42c24fedc2c39f32ad87ead7ce780/raw/c20e38515cf107349d7f23e1a90c811361039005/~log
-    my $squashanalyzer = App::Squashathons.new(test-log-url);
-    dd $squashanalyzer.contributions;
-    
-Or you can use directly the script
-
-    resource/scripts/squashalyzer a-raw-url
-    
 
 DESCRIPTION
 ===========
 
-App::Squashathons is a script and module for
-analyzing
-[squashathon](https://github.com/rakudo/rakudo/wiki/Rakudo-SQUASHathon-Guide) 
-logs created by
-the
-[Squashable tool](https://github.com/perl6/whateverable/wiki/squashable).
-
+App::Squashathons is ...
 
 AUTHOR
 ======

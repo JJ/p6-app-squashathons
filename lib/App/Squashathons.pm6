@@ -1,5 +1,5 @@
 use v6.c;
-unit class App::Squashathons:ver<0.0.1>;
+unit class App::Squashathons:ver<0.0.2>;
 
 use LWP::Simple;
 

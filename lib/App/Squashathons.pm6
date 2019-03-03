@@ -3,7 +3,8 @@ unit class App::Squashathons:ver<0.0.1>;
 
 use LWP::Simple;
 
-constant headers is export = <total wrote labeled unlabeled opened closed reopened self edited>;
+constant headers is export = <total wrote labeled unlabeled opened closed reopened self edited pushed merged submitted synchronize>;
+constant no-total is export = <wrote labeled unlabeled opened closed reopened self edited pushed merged submitted synchronize>;
 has @!contributions;
 has %.contributions;
 has $!lwp;
@@ -17,18 +18,18 @@ method new( $url ) {
         $l ~~ /$<who> = [ <[\w \-]>+ ]\+\+ \s+ $<what> = [ \w+ ]/;
         my $who = ~$<who>;
         my $what = ~$<what>;
-        if defined %contributions{$who} {
-           if defined %contributions{$who}{$what} {
-             %contributions{$who}{$what}++;
-             %contributions{$who}<total>++;
-           } else {
-                %contributions{$who}{$what} = 1;
-           }
+        if defined %contributions{$who}{$what} {
+           %contributions{$who}{$what}++;
         } else {
-            %contributions{$who} = { $what => 1,
-                                     total => 1};
+            %contributions{$who}{$what} = 1;
         }
     }
+    
+    for %contributions.keys -> $who {
+        %contributions{$who}<total> = [+] %contributions{$who}{no-total}:v;
+    }
+        
+
     self.bless(:%contributions,:$lwp);
     
 }
